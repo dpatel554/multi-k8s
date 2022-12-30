@@ -14,3 +14,10 @@ after_success:
   - docker build -t dpatel554/multi-nginx ./nginx
   - docker build -t dpatel554/multi-server ./server
   - docker build -t dpatel554/multi-worker ./worker
+
+  #log in to teh docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push dpatel554/multi-client
+  - docker push dpatel554/multi-nginx
+  - docker push dpatel554/multi-server
+  - docker push dpatel554/multi-worker
